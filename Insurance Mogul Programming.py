@@ -60,7 +60,9 @@ for make, count in make_c.items():
     i_rating_calc = make_sum[make] / count
     i_loss_calc = make_losses[make]/count
     car_price_calc = make_price[make]/count
-    #print(f"{make}: I_rating={i_rating_calc:.4f}")
+    print(f"{make}: Insurance rating = {i_rating_calc:.4f}\n")
+    print(f"{make}: Insurance Losses, Normalized = {i_loss_calc:.2f}\n ")
+    print(f"{make}: Car Price = {car_price_calc:2f}\n ")
     i_rating_a.append(i_rating_calc)
     i_losses.append(i_loss_calc)
     car_prices.append(car_price_calc)
@@ -89,7 +91,7 @@ ax2 = ax1.twinx()
 
 color = 'tab:blue'
 ax2.set_ylabel('Average Insurance Losses, Normalized', color=color) 
-ax2.plot(make_c_l, i_losses, color=color)
+ax2.stem(make_c_l, i_losses, bottom = 121)
 ax2.tick_params(axis='y', labelcolor=color)
 
 ax1.tick_params(axis="x", rotation= 90)
@@ -113,7 +115,7 @@ ax2 = ax1.twinx()
 
 color = 'tab:blue'
 ax2.set_ylabel('Prices', color=color) 
-ax2.plot(make_c_l, car_prices, color=color)
+ax2.scatter(make_c_l, car_prices, s=40, color = color)
 ax2.tick_params(axis='y', labelcolor=color)
 
 ax1.tick_params(axis="x", rotation= 90)
@@ -137,7 +139,7 @@ ax2 = ax1.twinx()
 
 color = 'tab:blue'
 ax2.set_ylabel('Prices', color=color) 
-ax2.plot(make_c_l, car_prices, color=color)
+ax2.stem(make_c_l, car_prices, bottom =24500)
 ax2.tick_params(axis='y', labelcolor=color)
 
 ax1.tick_params(axis="x", rotation= 90)
