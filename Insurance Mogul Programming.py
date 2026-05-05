@@ -9,7 +9,8 @@ from collections import defaultdict
 
 # Step 1: Load all data and load into array with headers for each datatype
 
-file_name = "C:/Users/jcuzz_zici3uw/Desktop/School/PROGRAMMING/Super-awesome-315-final/DataRepository/imports-85.data"
+#file_name = "C:/Users/jcuzz_zici3uw/Desktop/School/PROGRAMMING/Super-awesome-315-final/DataRepository/imports-85.data"
+file_name = r"C:\Users\nelms\OneDrive - James Madison University\ENGR 315\Super-awesome-315-final\DataRepository\imports-85.data"
 
 no_qm = []
 
@@ -20,7 +21,7 @@ with open(file_name, 'r') as file:
         cleaned_row = [cell.replace('?', '') for cell in row]
         no_qm.append(cleaned_row)
 
-def parse_data(data): 
+def parse_data(data):
     file = pd.DataFrame(data)    # Convert the cleaned list of lists to a DataFrame
     i_rating = file.iloc[:,0].tolist()
     n_risk = file.iloc[:,1].tolist()
@@ -31,7 +32,7 @@ def parse_data(data):
 
 i_rating, n_risk, make, price = parse_data(no_qm)
 
-car_sets = list(zip(make, price, i_rating, n_risk)) 
+car_sets = list(zip(make, price, i_rating, n_risk))
 
 make_c = defaultdict(int)
 make_sum = defaultdict(int)
@@ -67,7 +68,7 @@ for make, count in make_c.items():
     i_losses.append(i_loss_calc)
     car_prices.append(car_price_calc)
 
-    
+
 make_c_l = list(make_c)
 ## Basic Bar
 plt.bar(make_c_l, i_rating_a)
@@ -90,7 +91,7 @@ ax1.axhline(0, color='black', linewidth=1)
 ax2 = ax1.twinx()
 
 color = 'tab:blue'
-ax2.set_ylabel('Average Insurance Losses, Normalized', color=color) 
+ax2.set_ylabel('Average Insurance Losses, Normalized', color=color)
 ax2.stem(make_c_l, i_losses, bottom = 121)
 ax2.tick_params(axis='y', labelcolor=color)
 
@@ -114,7 +115,7 @@ ax1.axhline(0, color='black', linewidth=1)
 ax2 = ax1.twinx()
 
 color = 'tab:blue'
-ax2.set_ylabel('Prices', color=color) 
+ax2.set_ylabel('Prices', color=color)
 ax2.scatter(make_c_l, car_prices, s=40, color = color)
 ax2.tick_params(axis='y', labelcolor=color)
 
@@ -138,7 +139,7 @@ ax1.yaxis.set_inverted(True)
 ax2 = ax1.twinx()
 
 color = 'tab:blue'
-ax2.set_ylabel('Prices', color=color) 
+ax2.set_ylabel('Prices', color=color)
 ax2.stem(make_c_l, car_prices, bottom =24500)
 ax2.tick_params(axis='y', labelcolor=color)
 
@@ -153,7 +154,7 @@ correlation, p_value = pearsonr(i_losses, i_rating_a)
 print(f"The Pearson Correlation p_value is {p_value:.4f}")
 if p_value > 0.05:
     print("The correlation is not statistically significant")
-else: 
+else:
     print("The correlation is statistically significant")
 
 
