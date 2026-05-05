@@ -61,7 +61,7 @@ print()
 
 
 # Pull the data with our awesome function
-file_name = r"C:\Users\nelms\OneDrive - James Madison University\ENGR 315\Super-awesome-315-final\DataRepository\imports-85.data"
+file_name = r".\DataRepository\imports-85.data"
 data = parse_data(file_name)
 
 city_mpg = data['city_mpg'].astype(float)
