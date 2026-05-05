@@ -19,7 +19,11 @@ allData = parser.parse(filepath)
 citympg = allData["city-mpg"]
 highwaympg = allData["highway-mpg"]
 
+print()
+print("The question is \"How can engine properties affect mpg?\"")
+print()
 
+carMakes = parser.refineData(allData,"make",str)
 bore = parser.refineData(allData,"bore",float)
 stroke = parser.refineData(allData,"stroke",float)
 compRatio = parser.refineData(allData,"compression-ratio",float)
@@ -30,6 +34,20 @@ fuelSystem = parser.refineData(allData,"fuel-system",str)
 peakRPM = parser.refineData(allData,"peak-rpm",float)
 engineLoc = parser.refineData(allData,"engine-location",str)
 fuelType = parser.refineData(allData,"fuel-type",str)
+
+maxMPGArg = np.argmax(highwaympg)
+minMPGArg = np.argmin(highwaympg)
+
+print(f"The car with the maximum MPG is a {carMakes[maxMPGArg]}, which has an engine size of {engineSize[maxMPGArg]}, \
+a horsepower of {horsepower[maxMPGArg]}, and {numCylinders[maxMPGArg]} cylinders. The city MGP is \
+{citympg[maxMPGArg]} and the highway MPG is {highwaympg[maxMPGArg]}")
+print()
+print(f"The car with the minimum MPG is a {carMakes[minMPGArg]}, which has an engine size of {engineSize[minMPGArg]}, \
+a horsepower of {horsepower[minMPGArg]}, and {numCylinders[minMPGArg]} cylinders. The city MGP is \
+{citympg[minMPGArg]} and the highway MPG is {highwaympg[minMPGArg]}")
+print()
+
+
 
 plt.scatter(horsepower,highwaympg,color='red',label="Highway MPG")
 plt.scatter(horsepower,citympg,color='blue',label="City MPG")
@@ -86,6 +104,9 @@ plt.ylabel("Miles Per Gallon")
 plt.title("peak RPM vs MPG")
 plt.legend()
 plt.show()
+
+print("The properties which correlate to Lower MPG are larger engine size and higher horsepower\n")
+print("The properties which do not do a good job in predicting MPG are peak RPM, fuel type, stroke, and number of cylinders\n")
 
 # Higher Horsepower, engine size, and number of cylinders correlate to lower mpg
 

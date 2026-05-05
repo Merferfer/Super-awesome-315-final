@@ -68,7 +68,7 @@ city_mpg = data['city_mpg'].astype(float)
 highway_mpg = data['highway_mpg'].astype(float)
 
 
-# Calculate the density of each car
+# Calculate the !!!!density!!!!! of each car
 length = (data['length'].astype(float)) / 12  # feet
 width = (data['width'].astype(float)) / 12  # feet
 height = (data['height'].astype(float)) / 12  # feet
