@@ -51,6 +51,7 @@ def parse_data(file):
                                 25: 'price'})  # Rename columns for clarity
     return data
 
+
 # Print out the given Question
 question = "What/which geometric features can affect the mpg of the cars and in what ways?"
 
@@ -80,6 +81,10 @@ highway_mpg = data['highway_mpg'].astype(float)
 density = data['density'].astype(float)
 price = pd.to_numeric(data['price'], errors='coerce')
 body_style = data['body-style'].astype(str)
+
+
+
+
 
 
 '''
