@@ -1,7 +1,6 @@
 import Main
 import pandas as ps
 import numpy as np
-from word2number import w2n
 from matplotlib import pyplot as plt
 
 filepath = r".\DataRepository\imports-85.data"
@@ -31,9 +30,6 @@ fuelSystem = parser.refineData(allData,"fuel-system",str)
 peakRPM = parser.refineData(allData,"peak-rpm",float)
 engineLoc = parser.refineData(allData,"engine-location",str)
 fuelType = parser.refineData(allData,"fuel-type",str)
-
-# sortCylinders = sorted(allData,key=w2n.word_to_num(allData["num-of-cylinders"]))
-
 
 plt.scatter(horsepower,highwaympg,color='red',label="Highway MPG")
 plt.scatter(horsepower,citympg,color='blue',label="City MPG")
@@ -91,17 +87,7 @@ plt.title("peak RPM vs MPG")
 plt.legend()
 plt.show()
 
-# plt.scatter(stroke,highwaympg,color='blue',label="stroke")
-# plt.scatter(compRatio,highwaympg,color='green',label="compression ratio")
-
-# Useless: Engine Loc
-
-
 # Higher Horsepower, engine size, and number of cylinders correlate to lower mpg
-
-
-
-# plt.legend()
 
 
 
