@@ -83,7 +83,7 @@ price = pd.to_numeric(data['price'], errors='coerce')
 body_style = data['body-style'].astype(str)
 
 
-
+# BAR GRAPH OF CAR MAKE VS MPG IN CITY AND HIGHWAY
 
 
 
@@ -149,3 +149,62 @@ plt.xticks(x, body_list)
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+
+'''
+Bar graph of make vs city mpg and highway mpg.
+'''
+make_list = data['make'].unique() # get the list of makes
+x = np.arange(len(make_list)) # set the lenght of x axis values
+city_mpg = []
+highway_mpg = []
+plt.figure(figsize=(12, 6))
+for make in make_list:
+    make_data = data[data['make'] == make] # get data for current make
+    city_mpg.append(make_data['city_mpg'].astype(float).mean())
+    highway_mpg.append(make_data['highway_mpg'].astype(float).mean())
+
+# Plot actual bars for city and highway mpg
+plt.bar(x - width/2, city_mpg, width, label='City MPG', color='blue')
+plt.bar(x + width/2, highway_mpg, width, label='Highway MPG', color='red')
+# make all the stuff for the graph
+plt.title('Make vs MPG')
+plt.xlabel('Make')
+plt.ylabel('MPG')
+plt.xticks(x, make_list, rotation=90)
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+'''
+Sifting cars with desireable features.
+'''
+# which cars are hatchbacks
+hatchbacks = []
+
+for i in range(len(data)):
+    if data['body-style'][i] == 'hatchback':
+        hatchbacks.append(i)
+
+# print unique makes of hatchbacks
+make_c = set()
+for i in hatchbacks:
+    make_c.add(data['make'][i])
+print("Makes of hatchbacks: ", make_c)
+print()
+
+# which hatchbacks are chevy
+chevy_hatchbacks = []
+for i in hatchbacks:
+    if data['make'][i] == 'chevrolet':
+        chevy_hatchbacks.append(i)
+
+print(f"Cars that are chevrolet and hatchbacks include Car {chevy_hatchbacks[0] + 1} and Car {chevy_hatchbacks[1] +1}.\n")
+
+print("Additional information about these cars is as follows:\n")
+
+# print out info about car 18 and 19 next to each other in one table
+car_19 = data.iloc[18]
+car_20 = data.iloc[19]
+car_info = pd.DataFrame({'Car 19': car_19, 'Car 20': car_20})
+print(car_info)
