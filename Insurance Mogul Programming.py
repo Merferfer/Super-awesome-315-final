@@ -9,7 +9,7 @@ from collections import defaultdict
 
 # Step 1: Load all data and load into array with headers for each datatype
 
-file_name = "C:/Users/jcuzz_zici3uw/Desktop/School/PROGRAMMING/Super-awesome-315-final/DataRepository/imports-85.data"
+file_name = "./DataRepository/imports-85.data"
 
 no_qm = []
 
