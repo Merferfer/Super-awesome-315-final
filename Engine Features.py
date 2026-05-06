@@ -9,8 +9,7 @@ parser = Main.parser
 
 allData = parser.parse(filepath)
 
-##TODO
-#Possible engine properties:
+#Engine properties:
 #   bore(19), stroke(20), compression ratio (21), horsepower (22), 
 #   peak rpm (23), city mpg (24), highway mpg (25)
 #   num of cylinders (16), engine size (17), fuel system (18)
